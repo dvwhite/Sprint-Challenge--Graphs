@@ -5,6 +5,9 @@ from world import World
 import random
 from ast import literal_eval
 
+from utils import bfs_path
+#import ipdb
+
 # Load world
 world = World()
 
