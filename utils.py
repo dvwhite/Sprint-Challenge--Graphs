@@ -1,7 +1,8 @@
+import random
 #import ipdb
 
 
-def bfs_path(starting_node, explored):
+def bfs_unexplored(starting_node, explored):
     # Exhaust that path
     visited = []
     nodes = [([], starting_node)]

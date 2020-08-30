@@ -5,7 +5,7 @@ from world import World
 import random
 from ast import literal_eval
 
-from utils import bfs_path
+from utils import bfs_unexplored
 #import ipdb
 
 # Load world
@@ -20,7 +20,7 @@ world = World()
 map_file = "maps/main_maze.txt"
 
 # Loads the map into a dictionary
-room_graph=literal_eval(open(map_file, "r").read())
+room_graph = literal_eval(open(map_file, "r").read())
 world.load_graph(room_graph)
 
 # Print an ASCII map
@@ -79,14 +79,14 @@ while rooms_to_visit:
 
     # If there's more rooms to explore, continue exploring them
     if len(unexplored) > 0:
-        rooms_to_visit += unexplored[-1]
+        rooms_to_visit += [random.choice(unexplored)]
 
     # Once the player hits a dead end, BFS to locate a path
     # back to closest unexplored location
     # Exhaust that path
     # Repeat until all paths are explored
     else:
-        path_to_unexplored = bfs_path(curr_room, explored)
+        path_to_unexplored = bfs_unexplored(curr_room, explored)
         if not path_to_unexplored is None:
             for direction in path_to_unexplored:
                 player.travel(direction)
@@ -100,7 +100,7 @@ while rooms_to_visit:
 
             # If there's more rooms to explore, continue exploring them
             if len(unexplored) > 0:
-                rooms_to_visit += unexplored[0]
+                rooms_to_visit += [random.choice(unexplored)]
 
 # print(traversal_path)
 
