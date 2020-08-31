@@ -6,7 +6,6 @@ import random
 from ast import literal_eval
 
 from utils import bfs_unexplored, get_quadrant, traverse_map, monte_carlo_paths
-import ipdb
 
 # Load world
 world = World()
