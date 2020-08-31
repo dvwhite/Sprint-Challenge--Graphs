@@ -174,8 +174,10 @@ def get_quadrant(node, world):
 def monte_carlo_paths(args, n_trials, results):
     [starting_vertex, path] = [*args]
     for idx in range(n_trials):
-        random.seed(idx)
+        seed_num = idx * random.randint(100, 10000)
+        #seed_num = 888420
+        random.seed(seed_num)
         traverse_map(starting_vertex, path)
-        results.append((idx, path.copy()))
+        results.append((seed_num, path.copy()))
         path.clear()
     return results
