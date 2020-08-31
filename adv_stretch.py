@@ -35,11 +35,15 @@ traversal_path = []
 # It can, but very rarely. The heuristic seems to involve finishing a
 # quadrant before moving on
 trials = []
-monte_carlo_paths([player.current_room, traversal_path], 100000, trials)
-min_path = min([(len(lst), idx) for idx, lst in enumerate(trials)])
+monte_carlo_paths([player.current_room, traversal_path], 70000, trials)
+min_path = min([(len(lst[1]), idx) for idx, lst in enumerate(trials)])
 print("Min:", min_path)
 if min_path[0] < 960:
-    print(trials[min_path[1]])
+    trial = trials[min_path[1]]
+    print(trial[1])
+    print("Random seed:", trial[0])
+
+traversal_path = trial[1]
 
 # Traverse the maze
 # traverse_map(player.current_room, traversal_path)
