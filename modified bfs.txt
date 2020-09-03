@@ -1,0 +1,22 @@
+BFS:
+Go from starting vertex to destination
+
+use a queue, and add the starting vertex to that queue
+dequeue the next path, which is an array of node id's
+get the vertex from the end of the path
+if the vertex is not in visited, check if it is the destination
+if it's the destination, then return the path
+otherwise, add the vertex to visited
+go through that vertex's neighbors, and add them to the queue as path + [vertex]
+
+
+Modified BFS for the project
+Find the path to the next room which has an explored exit
+
+use a queue, and add the current room to the queue
+dequeue the next path, which is an array of tuples of (directions, node ids)
+get the (direction, node id) from the end of the path
+if the node id is not in visited, check the exits for that id
+if one of the exits is unexplored, return the path
+otherwise, add the node id to visited
+go through that vertex's neighbors, and add them to the queue as path + (direction, node id)
